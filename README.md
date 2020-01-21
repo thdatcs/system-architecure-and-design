@@ -22,5 +22,5 @@ Design a large-scale system
 - **Jaeger:** Tracing
 - **Redis:** Cache
 - **Kafka:** Queue
-- **ProxySQL:** MySQL proxy
+- **ProxySQL:** MySQL proxy - split read & write operation to database
 - **MySQL:** Database
