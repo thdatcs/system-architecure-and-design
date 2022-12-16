@@ -9,4 +9,4 @@ Architect & design system
 ### API Gateway & IAM
 - API Gateway: https://github.com/apache/apisix
 - IAM: https://github.com/keycloak/keycloak
-- [How to secure Web/API by using APISIX & Keycloak](/apisix+keycloak)
+- [How to secure Web/API by using APISIX & Keycloak](/apisix+keycloak.md)
