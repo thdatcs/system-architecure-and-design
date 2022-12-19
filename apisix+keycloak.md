@@ -4,7 +4,15 @@
 - [Overview](apisix+keycloak.md#overview)
 - [Settings](apisix+keycloak.md#settings)
   - [Keycloak](apisix+keycloak.md#keycloak)
+    - [Realm](apisix+keycloak.md#create-a-realm)  
+    - [Client](apisix+keycloak.md#create-a-client) 
+      - [Client Roles](apisix+keycloak.md#create-client-roles) 
+      - [Authorization Service](apisix+keycloak.md#setup-authorization-services) 
+    - [Groups](apisix+keycloak.md#create-groups)  
+    - [Users](apisix+keycloak.md#create-users) 
   - [APISIX](apisix+keycloak.md#apisix)
+    - [Upstream](apisix+keycloak.md#create-an-upstream)  
+    - [Route](apisix+keycloak.md#create-a-route) 
 
 ## Overview
 The goal is to setup the gateway layer by using APISIX as an API Gateway and Keycloak as IAM. The result will look like the below image:
@@ -86,5 +94,93 @@ Access to **rule-engine-system** client and select **Authorization** tab to setu
 ![image](https://user-images.githubusercontent.com/6086297/208366289-17ea37b1-b258-447a-9bda-30ed5d9a5d1e.png)
 
 ### APISIX
-#### Create a route
 #### Create an upstream
+```json
+{
+  "name": "ups-to-res",
+  "nodes": [
+    {
+      "host": "{resource server host}",
+      "port": {resource server port},
+      "weight": 1
+    }
+  ],
+  "timeout": {
+    "connect": 6,
+    "send": 6,
+    "read": 6
+  },
+  "type": "roundrobin",
+  "scheme": "http",
+  "pass_host": "pass",
+  "name": "ups-to-res",
+  "keepalive_pool": {
+    "idle_timeout": 60,
+    "requests": 1000,
+    "size": 320
+  }
+}
+```
+#### Create a route
+```json
+{
+  "uri": "/v1/res*",
+  "name": "res-api",
+  "methods": [
+    "GET",
+    "POST",
+    "PUT",
+    "DELETE",
+    "PATCH",
+    "HEAD",
+    "OPTIONS",
+    "CONNECT",
+    "TRACE"
+  ],
+  "plugins": {
+    "authz-keycloak": {
+      "access_token_expires_in": 300,
+      "access_token_expires_leeway": 0,
+      "cache_ttl_seconds": 86400,
+      "client_id": "rule-engine-system",
+      "client_secret": "{client secret of rule-engine-system}",
+      "disable": false,
+      "discovery": "http://{keycloak host}:{keycloak port}/realms/apisix-authz/.well-known/uma2-configuration",
+      "grant_type": "urn:ietf:params:oauth:grant-type:uma-ticket",
+      "http_method_as_scope": true,
+      "keepalive": true,
+      "keepalive_pool": 5,
+      "keepalive_timeout": 60000,
+      "lazy_load_paths": true,
+      "policy_enforcement_mode": "ENFORCING",
+      "refresh_token_expires_in": 3600,
+      "refresh_token_expires_leeway": 0,
+      "resource_registration_endpoint": "http://{keycloak host}:{keycloak port}/realms/apisix-authz/authz/protection/resource_set",
+      "ssl_verify": true,
+      "timeout": 3000
+    },
+    "openid-connect": {
+      "access_token_in_authorization_header": true,
+      "bearer_only": true,
+      "client_id": "rule-engine-system",
+      "client_secret": "{client secret of rule-engine-system}",
+      "disable": false,
+      "discovery": "http://{keycloak host}:{keycloak port}/realms/apisix-authz/.well-known/openid-configuration",
+      "introspection_endpoint_auth_method": "client_secret_basic",
+      "logout_path": "/logout",
+      "realm": "apisix-authz",
+      "redirect_uri": "/v1/res/",
+      "scope": "openid",
+      "set_access_token_header": true,
+      "set_id_token_header": true,
+      "set_refresh_token_header": false,
+      "set_userinfo_header": true,
+      "ssl_verify": false,
+      "timeout": 3,
+      "use_pkce": false
+    }
+  },
+  "upstream_id": "{upstream id}",
+  "status": 1
+}
+```
