@@ -20,7 +20,7 @@ Create a realm named **apisix_authz**
 ![image](https://user-images.githubusercontent.com/6086297/208343371-0d107df1-628f-48a4-b181-be910e09765c.png)
 
 #### Create a client
-Create a client named **rule-engine-system** and enable **authorization services**
+Create a *OpenID Connect* client named **rule-engine-system** and enable **authorization services**
 ![image](https://user-images.githubusercontent.com/6086297/208343540-c2faaf3c-a531-4ae7-aba5-6ea46b1fb5ae.png)
 ![image](https://user-images.githubusercontent.com/6086297/208343569-8044a2e7-629e-44d6-ab07-4be39bd03a99.png)
 
@@ -34,9 +34,9 @@ Access to **rule-engine-system** client and select **Roles** tab to create clien
 
 ##### Setup authorization services
 Access to **rule-engine-system** client and select **Authorization** to setup authorization services
-###### Create scopes
-Create a scope named **GET**
-![image](https://user-images.githubusercontent.com/6086297/208347376-0c374965-762f-43ab-99f8-20d6b441ca3b.png)
+###### Create authorization scopes
+Create a authorization scope named **GET**
+![image](https://user-images.githubusercontent.com/6086297/208348904-1f7c4b0e-8d54-4795-acc3-454b62d5db59.png)
 
 ###### Create resources
 - Create a resource named **rule_resource**
@@ -46,7 +46,18 @@ Create a scope named **GET**
 ![image](https://user-images.githubusercontent.com/6086297/208347965-158e05fe-471f-40a7-a717-fdc8002b05a5.png)
 
 ###### Create policies
+- Create a *Role* policy named **rule_policy**
+![image](https://user-images.githubusercontent.com/6086297/208348370-b0d96818-d85d-4b8b-9d6d-e23b9dde4990.png)
+
+- Create a *Role* policy named **workflow_policy**
+![image](https://user-images.githubusercontent.com/6086297/208348643-b7ba2271-4126-40a9-abf4-23b66e1eae06.png)
+
 ###### Create permissions
+- Create a *Resource-Based* permission named **only_access_rule**
+![image](https://user-images.githubusercontent.com/6086297/208349234-64bc0ac2-e7f9-4efd-9593-a59d4ac0d33e.png)
+
+- Create a *Resource-Based* permission named **only_access_workflow**
+![image](https://user-images.githubusercontent.com/6086297/208349305-0e30e3ba-1a78-4e1f-9422-b3b1b772a094.png)
 
 #### Create groups
 
