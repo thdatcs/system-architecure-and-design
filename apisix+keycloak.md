@@ -1,7 +1,11 @@
 # Setup APISIX and Keycloak for Authentication and Authorization
 
 ## Table of Contents
-[Overview](apisix+keycloak.md#overview)
+- [Overview](apisix+keycloak.md#overview)
+- [Settings](apisix+keycloak.md#settings)
+  - [Keycloak](apisix+keycloak.md#keycloak)
+  - [APISIX](apisix+keycloak.md#apisix)
+
 ## Overview
 The goal is to setup the gateway layer by using APISIX as an API Gateway and Keycloak as IAM. The result will look like the below image:
 
