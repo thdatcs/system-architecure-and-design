@@ -60,8 +60,22 @@ Create a authorization scope named **GET**
 ![image](https://user-images.githubusercontent.com/6086297/208349305-0e30e3ba-1a78-4e1f-9422-b3b1b772a094.png)
 
 #### Create groups
+Create a group named **admin**
+![image](https://user-images.githubusercontent.com/6086297/208361774-f6863460-8515-412c-b951-f5e00c4a6600.png)
+
+##### Assign roles into group
+Access to **admin** group and select "Role mapping" tab to assign **rule_only** and **workflow_only** roles into group
+![image](https://user-images.githubusercontent.com/6086297/208362133-d22f2950-791c-4970-bdbe-f29a22878ede.png)
 
 #### Create users
+- Create a user named **admin** and assign this user into **admin** group. This user can access to **rule_resource** and **workflow_resource**
+![image](https://user-images.githubusercontent.com/6086297/208362690-24412e98-a811-410b-b491-009e2b8f1436.png)
+
+- Create a user named **only_rule** and assign **rule_only** role. This user only access to **rule_resource**
+![image](https://user-images.githubusercontent.com/6086297/208362979-48c02625-b6d4-4a90-ba02-0098ff000e60.png)
+
+- Create a user named **only_workflow** and assign **workflow_only** role. This user only access to **workflow_resource**
+![image](https://user-images.githubusercontent.com/6086297/208363022-396382ee-854f-446a-a36d-65b6e2d81b3f.png)
 
 ### APISIX
 #### Create a route
