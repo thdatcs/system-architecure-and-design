@@ -30,6 +30,9 @@ Second, Resource Owner can access to Resource Server behind APISIX by filling th
 
 ## Settings
 ### Keycloak
+#### Components
+![image](https://user-images.githubusercontent.com/6086297/208569929-b99f1f4f-cb44-4638-84e2-8de6e704a8e2.png)
+
 #### Create a realm
 - Create a realm named **apisix_authz**
 ![image](https://user-images.githubusercontent.com/6086297/208343371-0d107df1-628f-48a4-b181-be910e09765c.png)
