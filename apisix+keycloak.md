@@ -4,7 +4,7 @@
 - [Overview](apisix+keycloak.md#overview)
 - [Settings](apisix+keycloak.md#settings)
   - [Keycloak](apisix+keycloak.md#keycloak)
-    - [Components](apisix+keycloak.md#components)
+    - [Components](apisix+keycloak.md#role-policy-components)
     - [Realm](apisix+keycloak.md#create-a-realm)  
     - [Client](apisix+keycloak.md#create-a-client) 
       - [Client Roles](apisix+keycloak.md#create-client-roles) 
@@ -31,7 +31,8 @@ Second, Resource Owner can access to Resource Server behind APISIX by filling th
 
 ## Settings
 ### Keycloak
-#### Components
+Keycloak supports many kinds of policies in authorization services. In this session, I use role policy for authentication and authorization.
+#### Role Policy Components
 ![image](https://user-images.githubusercontent.com/6086297/208571389-1da4beca-8e2b-4aa1-86f8-44ab03e9e7fc.png)
 
 #### Create a realm
