@@ -4,6 +4,7 @@
 - [Overview](apisix+keycloak.md#overview)
 - [Settings](apisix+keycloak.md#settings)
   - [Keycloak](apisix+keycloak.md#keycloak)
+    - [Components](apisix+keycloak.md#components)
     - [Realm](apisix+keycloak.md#create-a-realm)  
     - [Client](apisix+keycloak.md#create-a-client) 
       - [Client Roles](apisix+keycloak.md#create-client-roles) 
@@ -31,7 +32,7 @@ Second, Resource Owner can access to Resource Server behind APISIX by filling th
 ## Settings
 ### Keycloak
 #### Components
-![image](https://user-images.githubusercontent.com/6086297/208569929-b99f1f4f-cb44-4638-84e2-8de6e704a8e2.png)
+![image](https://user-images.githubusercontent.com/6086297/208570779-7892d559-9de8-41d2-b277-8a4356ad5ce3.png)
 
 #### Create a realm
 - Create a realm named **apisix_authz**
